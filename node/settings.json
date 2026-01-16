@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(pnpm:*)",
+      "Bash(yarn:*)",
+      "Bash(node:*)",
+      "Bash(vitest:*)",
+      "Bash(jest:*)",
+      "Bash(eslint:*)",
+      "Bash(prettier:*)",
+      "Bash(tsc:*)",
+      "Bash(tsx:*)",
+      "Bash(bun:*)",
+      "Bash(turbo:*)",
+      "Bash(nx:*)",
+      "Bash(playwright:*)",
+      "Bash(cypress:*)",
+      "Bash(biome:*)",
+      "Bash(oxlint:*)",
+      "Bash(oxc_format:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./.env.local)",
+      "Read(./.npmrc)",
+      "Read(./secrets/**)",
+      "Read(./**/secrets/**)"
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(pip:*)",
+      "Bash(pip3:*)",
+      "Bash(uv:*)",
+      "Bash(pytest:*)",
+      "Bash(ruff:*)",
+      "Bash(black:*)",
+      "Bash(mypy:*)",
+      "Bash(poetry:*)",
+      "Bash(pdm:*)",
+      "Bash(hatch:*)",
+      "Bash(tox:*)",
+      "Bash(isort:*)",
+      "Bash(flake8:*)",
+      "Bash(pylint:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./.pypirc)",
+      "Read(./secrets/**)",
+      "Read(./secrets.py)",
+      "Read(./**/secrets.py)",
+      "Read(./config/settings.py)",
+      "Read(./local_settings.py)",
+      "Read(./**/local_settings.py)",
+      "Read(./.secrets.toml)"
+    ]
+  }
+}

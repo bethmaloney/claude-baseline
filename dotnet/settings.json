@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet restore:*)",
+      "Bash(dotnet build:*)",
+      "Bash(dotnet test:*)",
+      "Bash(dotnet run:*)",
+      "Bash(dotnet watch:*)",
+      "Bash(dotnet ef:*)",
+      "Bash(dotnet format:*)",
+      "Bash(dotnet clean:*)",
+      "Bash(dotnet publish:*)",
+      "Bash(dotnet add:*)",
+      "Bash(dotnet remove:*)",
+      "Bash(dotnet list:*)",
+      "Bash(dotnet new:*)",
+      "Bash(dotnet tool:*)",
+      "Bash(dotnet nuget:*)"
+    ],
+    "deny": [
+      "Read(./appsettings.*.json)",
+      "Read(./appsettings.Development.json)",
+      "Read(./appsettings.Production.json)",
+      "Read(./**/appsettings.*.json)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(~/.microsoft/usersecrets/**)"
+    ]
+  }
+}
