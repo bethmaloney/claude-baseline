@@ -1,0 +1,75 @@
+{
+  "stacks": {
+    "node": {
+      "description": "Node.js/TypeScript: npm, yarn, pnpm, bun, jest, vitest, eslint, prettier, tsc",
+      "tiers": ["standard", "web"],
+      "detect": ["package.json", "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb"]
+    },
+    "python": {
+      "description": "Python: pip, uv, pytest, ruff, black, mypy, poetry",
+      "tiers": ["standard", "web"],
+      "detect": ["pyproject.toml", "setup.py", "requirements.txt", "Pipfile", "poetry.lock", "uv.lock"]
+    },
+    "go": {
+      "description": "Go: go, gofmt, golangci-lint, staticcheck",
+      "tiers": ["standard", "web"],
+      "detect": ["go.mod", "go.sum"]
+    },
+    "rust": {
+      "description": "Rust: cargo, rustc, rustfmt, clippy",
+      "tiers": ["standard", "web"],
+      "detect": ["Cargo.toml", "Cargo.lock"]
+    },
+    "java": {
+      "description": "Java: maven, gradle, mvn, javac",
+      "tiers": ["standard", "web"],
+      "detect": ["pom.xml", "build.gradle", "build.gradle.kts", "gradlew"]
+    },
+    "ruby": {
+      "description": "Ruby: bundler, rake, rspec, rubocop",
+      "tiers": ["standard", "web"],
+      "detect": ["Gemfile", "Gemfile.lock", "Rakefile", ".ruby-version"]
+    },
+    "php": {
+      "description": "PHP: composer, phpunit, phpstan",
+      "tiers": ["standard", "web"],
+      "detect": ["composer.json", "composer.lock"]
+    },
+    "dotnet": {
+      "description": ".NET: dotnet, nuget, msbuild",
+      "tiers": ["standard", "web"],
+      "detect": ["*.csproj", "*.fsproj", "*.vbproj", "*.sln", "global.json"]
+    },
+    "cpp": {
+      "description": "C/C++: cmake, make, gcc, clang",
+      "tiers": ["standard", "web"],
+      "detect": ["CMakeLists.txt", "Makefile", "meson.build", "conanfile.txt", "conanfile.py", "vcpkg.json"]
+    },
+    "docker": {
+      "description": "Docker: docker, docker-compose",
+      "tiers": ["standard", "web"],
+      "detect": ["Dockerfile", "docker-compose.yml", "docker-compose.yaml", "compose.yml", "compose.yaml"]
+    },
+    "git": {
+      "description": "Git: status, log, diff, commit, push, pull",
+      "tiers": ["readonly", "standard", "full", "web"],
+      "detect": [".git"]
+    },
+    "github": {
+      "description": "GitHub CLI: gh pr, gh issue, gh repo",
+      "tiers": ["readonly", "standard", "full", "web"],
+      "detect": [".github"]
+    },
+    "bash": {
+      "description": "Bash: common shell utilities",
+      "tiers": ["standard"],
+      "detect": []
+    }
+  },
+  "files": {
+    "readonly": "settings.readonly.json",
+    "standard": "settings.json",
+    "full": "settings.full.json",
+    "web": "settings.web.json"
+  }
+}

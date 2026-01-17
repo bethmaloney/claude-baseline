@@ -61,6 +61,22 @@ Currently, `git/` and `github/` offer readonly/default/full tiers. Most stacks h
 
 ## Usage
 
+### Option 1: Install the Skill (Recommended)
+
+Install the `baseline-permissions` skill to auto-configure permissions:
+
+```bash
+claude skill install /path/to/baseline-permissions.skill
+```
+
+Then run `/baseline-permissions` in any repo. The skill will:
+1. Detect your tech stacks automatically
+2. Prompt for permission tier (readonly/standard/full)
+3. Ask about web access for documentation
+4. Update your `.claude/settings.json`
+
+### Option 2: Manual Setup
+
 1. Find your stack in this repo
 2. Copy the `settings.json` to your project's `.claude/settings.json`
 3. Customize as needed
@@ -68,7 +84,7 @@ Currently, `git/` and `github/` offer readonly/default/full tiers. Most stacks h
 ```bash
 # Example: Setting up a Node.js project
 mkdir -p .claude
-curl -o .claude/settings.json https://raw.githubusercontent.com/YOUR_USERNAME/claude-baseline/main/node/settings.json
+curl -o .claude/settings.json https://raw.githubusercontent.com/bethmaloney/claude-baseline/main/node/settings.json
 ```
 
 ### Combining stacks
@@ -80,6 +96,28 @@ Most projects need multiple templates. Merge the `allow` and `deny` arrays:
 # node/ + git/ + github/ + docker/
 ```
 
+## Index File
+
+The `index.json` at the repo root provides machine-readable metadata for programmatic access:
+
+```json
+{
+  "stacks": {
+    "node": {
+      "description": "Node.js/TypeScript: npm, yarn, ...",
+      "tiers": ["standard", "web"],
+      "detect": ["package.json", "yarn.lock", ...]
+    }
+  },
+  "files": {
+    "standard": "settings.json",
+    "web": "settings.web.json"
+  }
+}
+```
+
+This enables tools to discover available stacks, their supported tiers, and detection patterns.
+
 ## Contributing
 
 Contributions welcome! When adding or modifying templates:
@@ -89,6 +127,7 @@ Contributions welcome! When adding or modifying templates:
 3. Document any non-obvious inclusions in the stack's README
 4. Test the configuration in a real project
 5. For new stacks with tiered permissions, follow the readonly/default/full pattern
+6. **Update `index.json`** — Add your stack with description, tiers, and detection patterns
 
 ## Philosophy
 
