@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh:*)"
+    ],
+    "deny": [
+      "Read(~/.config/gh/**)"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git:*)"
+    ],
+    "deny": [
+      "Read(./.git/config)",
+      "Read(~/.gitconfig)",
+      "Read(~/.git-credentials)",
+      "Read(./.git-credentials)"
+    ]
+  }
+}

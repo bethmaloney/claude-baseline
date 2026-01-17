@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker:*)",
+      "Bash(docker-compose:*)",
+      "Bash(podman:*)",
+      "Bash(podman-compose:*)",
+      "Bash(lazydocker:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./docker-compose.override.yml)",
+      "Read(./docker-compose.override.yaml)",
+      "Read(./**/docker-compose.override.yml)",
+      "Read(./**/docker-compose.override.yaml)",
+      "Read(./secrets/**)",
+      "Read(./**/secrets/**)",
+      "Read(~/.docker/config.json)"
+    ]
+  }
+}

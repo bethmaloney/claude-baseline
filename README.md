@@ -18,22 +18,42 @@ Pre-configured, community-vetted permission templates for common tech stacks:
 
 ```
 claude-baseline/
-├── dotnet/
-│   └── settings.json      # dotnet build, test, ef migrations, etc.
-├── node/
-│   └── settings.json      # npm/pnpm/yarn, vitest, eslint, etc.
-├── python/
-│   └── settings.json      # pip, pytest, uv, ruff, etc.
-├── rust/
-│   └── settings.json      # cargo build, test, clippy, etc.
-├── go/
-│   └── settings.json      # go build, test, mod tidy, etc.
-└── ...
+├── Language Stacks
+│   ├── dotnet/        # .NET/C# development
+│   ├── node/          # Node.js/JavaScript/TypeScript
+│   ├── python/        # Python development
+│   ├── rust/          # Rust development
+│   └── go/            # Go development
+│
+└── Cross-Stack Tools
+    ├── git/           # Git version control
+    ├── github/        # GitHub CLI (gh)
+    └── docker/        # Docker and containers
 ```
 
 Each template includes:
 - **`permissions.allow`** — Safe commands for that ecosystem
 - **`permissions.deny`** — Patterns to protect secrets (`.env`, credentials, etc.)
+
+## Permission Tiers
+
+Some stacks offer multiple permission levels:
+
+| File | Purpose |
+|------|---------|
+| `settings.json` | **Default** — Balanced for common workflows |
+| `settings.readonly.json` | Read-only exploration and review |
+| `settings.full.json` | All commands (power users) |
+
+### When to use each tier
+
+| Tier | Best for |
+|------|----------|
+| **readonly** | Code review, auditing, exploring unfamiliar codebases, CI checks |
+| **default** | Day-to-day development, feature work, most workflows |
+| **full** | Repository maintenance, admin tasks, power users who understand the risks |
+
+Currently, `git/` and `github/` offer all three tiers. Language stacks use a single balanced default.
 
 ## Usage
 
@@ -47,22 +67,33 @@ mkdir -p .claude
 curl -o .claude/settings.json https://raw.githubusercontent.com/YOUR_USERNAME/claude-baseline/main/node/settings.json
 ```
 
+### Combining stacks
+
+Most projects need multiple templates. Merge the `allow` and `deny` arrays:
+
+```bash
+# A typical full-stack project might combine:
+# node/ + git/ + github/ + docker/
+```
+
 ## Contributing
 
 Contributions welcome! When adding or modifying templates:
 
 1. Keep permissions minimal — only include commonly-used, safe commands
 2. Always include deny patterns for secrets specific to that ecosystem
-3. Document any non-obvious inclusions
+3. Document any non-obvious inclusions in the stack's README
 4. Test the configuration in a real project
+5. For new stacks with tiered permissions, follow the readonly/default/full pattern
 
 ## Philosophy
 
 - **Secure by default** — Deny patterns are as important as allow patterns
 - **Minimal permissions** — Include only what's commonly needed
 - **Stack-specific** — Each ecosystem has different tools and secrets to protect
+- **Composable** — Combine templates for multi-stack projects
 - **Community-vetted** — Contributions are reviewed for security
 
 ## License
 
-[CC0 1.0 Universal](LICENSE) — Public domain, same as github/gitignore
+[CC0 1.0 Universal](LICENSE) — Public domain
