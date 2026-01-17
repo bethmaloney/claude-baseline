@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cargo:*)",
+      "Bash(rustc:*)",
+      "Bash(rustup:*)",
+      "Bash(rustfmt:*)",
+      "Bash(clippy-driver:*)",
+      "Bash(rust-analyzer:*)",
+      "Bash(cargo-watch:*)",
+      "Bash(cargo-nextest:*)",
+      "Bash(cargo-expand:*)",
+      "Bash(cargo-audit:*)",
+      "Bash(cargo-deny:*)",
+      "Bash(cargo-outdated:*)",
+      "Bash(cargo-machete:*)",
+      "Bash(wasm-pack:*)",
+      "Bash(trunk:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./**/secrets/**)",
+      "Read(./Secrets.toml)",
+      "Read(./**/Secrets.toml)",
+      "Read(./.cargo/credentials.toml)",
+      "Read(~/.cargo/credentials.toml)"
+    ]
+  }
+}

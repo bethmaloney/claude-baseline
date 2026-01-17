@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go:*)",
+      "Bash(gofmt:*)",
+      "Bash(goimports:*)",
+      "Bash(golint:*)",
+      "Bash(golangci-lint:*)",
+      "Bash(staticcheck:*)",
+      "Bash(govulncheck:*)",
+      "Bash(gotests:*)",
+      "Bash(mockgen:*)",
+      "Bash(wire:*)",
+      "Bash(swag:*)",
+      "Bash(air:*)",
+      "Bash(templ:*)",
+      "Bash(dlv:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./**/secrets/**)",
+      "Read(./.netrc)",
+      "Read(~/.netrc)"
+    ]
+  }
+}
