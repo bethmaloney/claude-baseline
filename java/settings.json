@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(java:*)",
+      "Bash(javac:*)",
+      "Bash(javadoc:*)",
+      "Bash(jar:*)",
+      "Bash(mvn:*)",
+      "Bash(./mvnw:*)",
+      "Bash(gradle:*)",
+      "Bash(./gradlew:*)",
+      "Bash(ant:*)",
+      "Bash(jshell:*)",
+      "Bash(jdeps:*)",
+      "Bash(jlink:*)",
+      "Bash(jpackage:*)",
+      "Bash(checkstyle:*)",
+      "Bash(spotbugs:*)",
+      "Bash(pmd:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./**/secrets/**)",
+      "Read(~/.m2/settings.xml)",
+      "Read(~/.m2/settings-security.xml)",
+      "Read(~/.gradle/gradle.properties)",
+      "Read(./gradle.properties)"
+    ]
+  }
+}

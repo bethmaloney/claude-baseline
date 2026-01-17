@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php:*)",
+      "Bash(composer:*)",
+      "Bash(artisan:*)",
+      "Bash(./artisan:*)",
+      "Bash(phpunit:*)",
+      "Bash(./vendor/bin/phpunit:*)",
+      "Bash(pest:*)",
+      "Bash(./vendor/bin/pest:*)",
+      "Bash(phpstan:*)",
+      "Bash(./vendor/bin/phpstan:*)",
+      "Bash(psalm:*)",
+      "Bash(./vendor/bin/psalm:*)",
+      "Bash(pint:*)",
+      "Bash(./vendor/bin/pint:*)",
+      "Bash(php-cs-fixer:*)",
+      "Bash(./vendor/bin/php-cs-fixer:*)",
+      "Bash(rector:*)",
+      "Bash(./vendor/bin/rector:*)",
+      "Bash(phpcbf:*)",
+      "Bash(phpcs:*)",
+      "Bash(./vendor/bin/sail:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./**/secrets/**)",
+      "Read(~/.composer/auth.json)",
+      "Read(~/.config/composer/auth.json)",
+      "Read(./auth.json)"
+    ]
+  }
+}

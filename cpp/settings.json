@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gcc:*)",
+      "Bash(g++:*)",
+      "Bash(clang:*)",
+      "Bash(clang++:*)",
+      "Bash(make:*)",
+      "Bash(cmake:*)",
+      "Bash(ninja:*)",
+      "Bash(meson:*)",
+      "Bash(gdb:*)",
+      "Bash(lldb:*)",
+      "Bash(valgrind:*)",
+      "Bash(ccache:*)",
+      "Bash(clang-format:*)",
+      "Bash(clang-tidy:*)",
+      "Bash(cppcheck:*)",
+      "Bash(bear:*)",
+      "Bash(conan:*)",
+      "Bash(vcpkg:*)",
+      "Bash(pkg-config:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./**/secrets/**)"
+    ]
+  }
+}
