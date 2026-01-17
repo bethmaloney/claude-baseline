@@ -43,7 +43,7 @@ Some stacks offer multiple permission levels:
 |------|---------|
 | `settings.json` | **Default** — Balanced for common workflows |
 | `settings.readonly.json` | Read-only exploration and review |
-| `settings.full.json` | All commands (power users) |
+| `settings.full.json` | All commands (dangerous) |
 
 ### When to use each tier
 
