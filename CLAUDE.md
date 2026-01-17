@@ -9,10 +9,15 @@ claude-baseline is a collection of `.claude/settings.json` templates for differe
 ## Repository Structure
 
 ```
-├── index.json              # Stack index with metadata, tiers, and detection patterns
-├── skill/                  # Installable skill for auto-configuration
+├── .claude-plugin/
+│   └── marketplace.json        # Plugin marketplace manifest
+├── index.json                  # Stack index with metadata, tiers, and detection patterns
+├── plugins/
 │   └── baseline-permissions/
-│       └── SKILL.md
+│       ├── .claude-plugin/
+│       │   └── plugin.json     # Plugin manifest
+│       └── commands/
+│           └── baseline-permissions.md
 └── {stack}/
     ├── settings.json           # Default balanced permissions
     ├── settings.readonly.json  # Read-only (optional, for git/github)
@@ -22,6 +27,26 @@ claude-baseline is a collection of `.claude/settings.json` templates for differe
 ```
 
 Directories are organized by language stacks (e.g., node, python, rust) and cross-stack tools (e.g., git, docker).
+
+## Plugin Marketplace
+
+This repo is a Claude Code plugin marketplace. Users can install the baseline-permissions plugin to automatically configure permissions for their projects.
+
+### Installation
+
+```
+/plugin marketplace add bethmaloney/claude-baseline
+/plugin install baseline-permissions@claude-baseline
+```
+
+### Usage
+
+After installation, users can run:
+```
+/baseline-permissions
+```
+
+This will detect tech stacks in their project and configure `.claude/settings.json` with appropriate permissions.
 
 ## Index File
 

@@ -1,0 +1,6 @@
+{
+  "name": "baseline-permissions",
+  "description": "Configure Claude Code permissions for detected or specified tech stacks",
+  "version": "1.0.0",
+  "commands": ["./commands/"]
+}

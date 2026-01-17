@@ -1,0 +1,21 @@
+{
+  "name": "claude-baseline",
+  "owner": {
+    "name": "Beth Maloney"
+  },
+  "metadata": {
+    "description": "Pre-configured Claude Code permission templates for common tech stacks",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "baseline-permissions",
+      "source": "./plugins/baseline-permissions",
+      "description": "Configure Claude Code permissions for detected or specified tech stacks (node, python, go, rust, etc.)",
+      "keywords": ["permissions", "settings", "configuration", "security"],
+      "category": "productivity",
+      "repository": "https://github.com/bethmaloney/claude-baseline",
+      "license": "MIT"
+    }
+  ]
+}
