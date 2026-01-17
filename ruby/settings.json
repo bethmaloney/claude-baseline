@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ruby:*)",
+      "Bash(gem:*)",
+      "Bash(bundle:*)",
+      "Bash(bundler:*)",
+      "Bash(rake:*)",
+      "Bash(rails:*)",
+      "Bash(./bin/rails:*)",
+      "Bash(./bin/rake:*)",
+      "Bash(rspec:*)",
+      "Bash(./bin/rspec:*)",
+      "Bash(rubocop:*)",
+      "Bash(standardrb:*)",
+      "Bash(erb:*)",
+      "Bash(irb:*)",
+      "Bash(rdoc:*)",
+      "Bash(yard:*)",
+      "Bash(solargraph:*)",
+      "Bash(spring:*)",
+      "Bash(foreman:*)",
+      "Bash(kamal:*)",
+      "Bash(cucumber:*)",
+      "Bash(minitest:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./**/secrets/**)",
+      "Read(./config/master.key)",
+      "Read(./config/credentials/*.key)",
+      "Read(~/.gem/credentials)"
+    ]
+  }
+}
