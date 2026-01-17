@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.python.org)",
+      "WebFetch(domain:peps.python.org)"
+    ]
+  }
+}

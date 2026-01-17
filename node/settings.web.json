@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:nodejs.org)",
+      "WebFetch(domain:developer.mozilla.org)",
+      "WebFetch(domain:tc39.es)",
+      "WebFetch(domain:typescriptlang.org)"
+    ]
+  }
+}

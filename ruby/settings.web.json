@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:ruby-doc.org)",
+      "WebFetch(domain:ruby-lang.org)"
+    ]
+  }
+}

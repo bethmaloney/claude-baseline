@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:en.cppreference.com)",
+      "WebFetch(domain:isocpp.org)"
+    ]
+  }
+}

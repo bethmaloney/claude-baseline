@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:doc.rust-lang.org)",
+      "WebFetch(domain:rust-lang.org)"
+    ]
+  }
+}

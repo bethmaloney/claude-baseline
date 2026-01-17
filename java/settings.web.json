@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.oracle.com)",
+      "WebFetch(domain:openjdk.org)"
+    ]
+  }
+}

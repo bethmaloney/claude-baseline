@@ -44,6 +44,7 @@ Some stacks offer multiple permission levels:
 | `settings.json` | **Default** — Balanced for common workflows |
 | `settings.readonly.json` | Read-only exploration and review |
 | `settings.full.json` | All commands (dangerous) |
+| `settings.web.json` | Adds WebFetch access to official documentation |
 
 ### When to use each tier
 
@@ -52,8 +53,11 @@ Some stacks offer multiple permission levels:
 | **readonly** | Code review, auditing, exploring unfamiliar codebases, CI checks |
 | **default** | Day-to-day development, feature work, most workflows |
 | **full** | Repository maintenance, admin tasks, power users who understand the risks |
+| **web** | When you want Claude to reference official documentation |
 
-Currently, `git/` and `github/` offer all three tiers. Language stacks use a single balanced default.
+Currently, `git/` and `github/` offer readonly/default/full tiers. Most stacks have default and web tiers.
+
+**Note on web tier:** WebFetch allows Claude to read web pages, which introduces prompt injection risk. The `settings.web.json` files only include official documentation domains (e.g., docs.python.org, nodejs.org) to minimize this risk. User-generated content sites are intentionally excluded.
 
 ## Usage
 

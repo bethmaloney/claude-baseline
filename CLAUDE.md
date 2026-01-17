@@ -13,6 +13,7 @@ claude-baseline is a collection of `.claude/settings.json` templates for differe
 ├── settings.json           # Default balanced permissions
 ├── settings.readonly.json  # Read-only (optional, for git/github)
 ├── settings.full.json      # All commands (optional, for git/github)
+├── settings.web.json       # Adds WebFetch for official documentation
 └── README.md               # Documents what's included and why
 ```
 
@@ -55,5 +56,8 @@ When adding or modifying templates:
 | readonly | `settings.readonly.json` | Code review, exploration, CI checks |
 | default | `settings.json` | Day-to-day development |
 | full | `settings.full.json` | Admin tasks, power users |
+| web | `settings.web.json` | Allows WebFetch to official documentation |
 
-Currently only `git/` and `github/` have all three tiers.
+Currently only `git/` and `github/` have readonly/default/full tiers. The `web` tier is available for all stacks.
+
+**Note on web tier:** WebFetch allows Claude to read web pages, which introduces prompt injection risk. The `settings.web.json` files only include official documentation domains (e.g., docs.python.org, nodejs.org) to minimize this risk. User-generated content sites are intentionally excluded.
