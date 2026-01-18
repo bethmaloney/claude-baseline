@@ -1,142 +1,77 @@
 # claude-baseline
 
-A collection of `.claude/settings.json` templates for different tech stacks — like [github/gitignore](https://github.com/github/gitignore), but for Claude Code permissions.
+Pre-configured Claude Code permissions for common tech stacks. Like [github/gitignore](https://github.com/github/gitignore), but for Claude Code.
 
-## The Problem
-
-When starting with Claude Code, developers face a choice:
-
-1. **Use `--dangerously-skip-permissions`** — Too risky, bypasses all safety guardrails
-2. **Manually configure permissions** — Tedious, easy to miss things, requires deep knowledge of your toolchain
-3. **Click "Always allow" repeatedly** — Interrupts flow, no security review
-
-There's no easy way to say "I'm working on a .NET project, give me sensible defaults."
-
-## The Solution
-
-Pre-configured, community-vetted permission templates for common tech stacks:
-
-```
-claude-baseline/
-├── Language Stacks
-│   ├── dotnet/        # .NET/C# development
-│   ├── node/          # Node.js/JavaScript/TypeScript
-│   ├── python/        # Python development
-│   ├── rust/          # Rust development
-│   └── go/            # Go development
-│
-└── Cross-Stack Tools
-    ├── git/           # Git version control
-    ├── github/        # GitHub CLI (gh)
-    └── docker/        # Docker and containers
-```
-
-Each template includes:
-- **`permissions.allow`** — Safe commands for that ecosystem
-- **`permissions.deny`** — Patterns to protect secrets (`.env`, credentials, etc.)
-
-## Permission Tiers
-
-Some stacks offer multiple permission levels:
-
-| File | Purpose |
-|------|---------|
-| `settings.json` | **Default** — Balanced for common workflows |
-| `settings.readonly.json` | Read-only exploration and review |
-| `settings.full.json` | All commands (dangerous) |
-| `settings.web.json` | Adds WebFetch access to official documentation |
-
-### When to use each tier
-
-| Tier | Best for |
-|------|----------|
-| **readonly** | Code review, auditing, exploring unfamiliar codebases, CI checks |
-| **default** | Day-to-day development, feature work, most workflows |
-| **full** | Repository maintenance, admin tasks, power users who understand the risks |
-| **web** | When you want Claude to reference official documentation |
-
-Currently, `git/` and `github/` offer readonly/default/full tiers. Most stacks have default and web tiers.
-
-**Note on web tier:** WebFetch allows Claude to read web pages, which introduces prompt injection risk. The `settings.web.json` files only include official documentation domains (e.g., docs.python.org, nodejs.org) to minimize this risk. User-generated content sites are intentionally excluded.
-
-## Usage
-
-### Option 1: Install the Plugin (Recommended)
-
-Install from the plugin marketplace:
+## Quick Start
 
 ```bash
 claude plugin marketplace add bethmaloney/claude-baseline
 claude plugin install baseline-permissions@claude-baseline
 ```
 
-Then run `/baseline-permissions` in any repo. The plugin will:
-1. Detect your tech stacks automatically
-2. Prompt for permission tier (readonly/standard/full)
-3. Ask about web access for documentation
-4. Update your `.claude/settings.json`
+Then in any project:
+```
+/baseline-permissions
+```
 
-### Option 2: Manual Setup
+That's it. The plugin detects your tech stack and configures `.claude/settings.json`.
 
-1. Find your stack in this repo
-2. Copy the `settings.json` to your project's `.claude/settings.json`
-3. Customize as needed
+---
+
+## What This Solves
+
+Without sensible defaults, you're stuck with:
+- **`--dangerously-skip-permissions`** — Too risky
+- **Manual configuration** — Tedious, error-prone
+- **Clicking "Always allow" repeatedly** — Interrupts flow
+
+This gives you vetted permission templates for Node, Python, Rust, Go, .NET, Docker, Git, and more.
+
+## Available Stacks
+
+| Stack | Description |
+|-------|-------------|
+| `node` | npm, yarn, pnpm, bun, jest, vitest, eslint, prettier, tsc |
+| `python` | pip, uv, pytest, ruff, black, mypy, poetry |
+| `go` | go, gofmt, golangci-lint |
+| `rust` | cargo, rustc, rustfmt, clippy |
+| `dotnet` | dotnet, nuget, msbuild |
+| `java` | maven, gradle |
+| `ruby` | bundler, rake, rspec, rubocop |
+| `php` | composer, phpunit, phpstan |
+| `cpp` | cmake, make, gcc, clang |
+| `docker` | docker, docker-compose |
+| `git` | status, log, diff, commit, push, pull |
+| `github` | gh pr, gh issue, gh repo |
+
+## Permission Tiers
+
+| Tier | File | Use Case |
+|------|------|----------|
+| `standard` | `settings.json` | Day-to-day development (default) |
+| `readonly` | `settings.readonly.json` | Code review, exploration |
+| `full` | `settings.full.json` | Admin tasks, power users |
+| `web` | `settings.web.json` | Adds official docs access |
+
+The plugin prompts you to choose.
+
+## Manual Setup
+
+If you prefer not to use the plugin:
 
 ```bash
-# Example: Setting up a Node.js project
 mkdir -p .claude
 curl -o .claude/settings.json https://raw.githubusercontent.com/bethmaloney/claude-baseline/main/node/settings.json
 ```
 
-### Combining stacks
-
-Most projects need multiple templates. Merge the `allow` and `deny` arrays:
-
-```bash
-# A typical full-stack project might combine:
-# node/ + git/ + github/ + docker/
-```
-
-## Index File
-
-The `index.json` at the repo root provides machine-readable metadata for programmatic access:
-
-```json
-{
-  "stacks": {
-    "node": {
-      "description": "Node.js/TypeScript: npm, yarn, ...",
-      "tiers": ["standard", "web"],
-      "detect": ["package.json", "yarn.lock", ...]
-    }
-  },
-  "files": {
-    "standard": "settings.json",
-    "web": "settings.web.json"
-  }
-}
-```
-
-This enables tools to discover available stacks, their supported tiers, and detection patterns.
+Combine multiple stacks by merging the `allow` and `deny` arrays.
 
 ## Contributing
 
-Contributions welcome! When adding or modifying templates:
-
-1. Keep permissions minimal — only include commonly-used, safe commands
-2. Always include deny patterns for secrets specific to that ecosystem
-3. Document any non-obvious inclusions in the stack's README
-4. Test the configuration in a real project
-5. For new stacks with tiered permissions, follow the readonly/default/full pattern
-6. **Update `index.json`** — Add your stack with description, tiers, and detection patterns
-
-## Philosophy
-
-- **Secure by default** — Deny patterns are as important as allow patterns
-- **Minimal permissions** — Include only what's commonly needed
-- **Stack-specific** — Each ecosystem has different tools and secrets to protect
-- **Composable** — Combine templates for multi-stack projects
-- **Community-vetted** — Contributions are reviewed for security
+1. Keep permissions minimal
+2. Always include deny patterns for secrets
+3. Update `index.json` with detection patterns
+4. Test in a real project
 
 ## License
 
