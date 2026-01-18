@@ -66,6 +66,14 @@ curl -o .claude/settings.json https://raw.githubusercontent.com/bethmaloney/clau
 
 Combine multiple stacks by merging the `allow` and `deny` arrays.
 
+## Philosophy
+
+- **Secure by default** — Deny patterns are as important as allow patterns
+- **Minimal permissions** — Include only what's commonly needed
+- **Stack-specific** — Each ecosystem has different tools and secrets to protect
+- **Composable** — Combine templates for multi-stack projects
+- **Community-vetted** — Contributions are reviewed for security
+
 ## Contributing
 
 1. Keep permissions minimal
