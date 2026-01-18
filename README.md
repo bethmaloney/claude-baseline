@@ -61,15 +61,16 @@ Currently, `git/` and `github/` offer readonly/default/full tiers. Most stacks h
 
 ## Usage
 
-### Option 1: Install the Skill (Recommended)
+### Option 1: Install the Plugin (Recommended)
 
-Install the `baseline-permissions` skill to auto-configure permissions:
+Install from the plugin marketplace:
 
 ```bash
-claude skill install /path/to/baseline-permissions.skill
+claude plugin marketplace add bethmaloney/claude-baseline
+claude plugin install baseline-permissions@claude-baseline
 ```
 
-Then run `/baseline-permissions` in any repo. The skill will:
+Then run `/baseline-permissions` in any repo. The plugin will:
 1. Detect your tech stacks automatically
 2. Prompt for permission tier (readonly/standard/full)
 3. Ask about web access for documentation
