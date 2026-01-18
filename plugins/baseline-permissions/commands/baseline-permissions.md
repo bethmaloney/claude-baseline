@@ -116,6 +116,14 @@ If `.claude/` directory doesn't exist, create it.
 
 Write final settings with 2-space indent JSON formatting.
 
+### Step 8: Notify User to Restart
+
+After writing the settings file, inform the user:
+
+> **Settings saved.** Restart Claude Code for the new permissions to take effect.
+
+This message must be the final output of the skill.
+
 ## Example Output
 
 Node + Python with standard tier and web enabled:
