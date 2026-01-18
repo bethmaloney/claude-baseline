@@ -74,6 +74,28 @@ Combine multiple stacks by merging the `allow` and `deny` arrays.
 - **Composable** — Combine templates for multi-stack projects
 - **Community-vetted** — Contributions are reviewed for security
 
+## Why This Matters: Decision Fatigue
+
+Every permission prompt requires a security decision. Humans have finite decision-making capacity.
+
+**The degradation pattern:**
+1. First prompt → Careful evaluation
+2. Prompts 5-10 → Quick scan, approve if it "looks right"
+3. Prompts 20+ → Reflexive approval, barely reading
+4. Eventually → "Let me just use `--dangerously-skip-permissions`"
+
+This is [decision fatigue](https://en.wikipedia.org/wiki/Decision_fatigue), compounded by **normalcy bias** — "nothing bad has happened, so the risk must be theoretical."
+
+The risk is asymmetric: 1,000 safe sessions don't offset one successful prompt injection that exfiltrates credentials or runs destructive commands.
+
+Pre-configured permissions act as **pre-made decisions**. You evaluate the patterns once, thoughtfully, rather than making the same decision repeatedly under cognitive load.
+
+| Approach | Decision Load | Risk |
+|----------|---------------|------|
+| No configuration | High (every prompt) | Fatigue → poor decisions |
+| `--dangerously-skip-permissions` | Zero | Maximum exposure |
+| Pre-configured allow lists | Low (only novel commands) | Balanced |
+
 ## Contributing
 
 1. Keep permissions minimal
