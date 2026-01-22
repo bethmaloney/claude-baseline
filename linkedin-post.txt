@@ -1,0 +1,35 @@
+I built a small open-source library to solve a permission problem that was annoying me.
+
+Claude Code asks for permission before running commands. That's good security practice. But in reality, I found myself:
+
+1. Carefully evaluating the first few prompts
+2. Quickly approving anything that "looked right" after prompt 10
+3. Eventually reaching for --dangerously-skip-permissions
+
+This is decision fatigue, and it's a security risk hiding in plain sight. The risk is asymmetric — 1,000 safe sessions don't offset one prompt injection that exfiltrates your .env file.
+
+So I created claude-baseline — pre-configured permission templates for common tech stacks. Think github/gitignore, but for Claude Code permissions.
+
+A Node project needs npm install. A Rust project needs cargo build. These patterns are predictable. You can evaluate them once, thoughtfully, instead of making the same decision 50 times under cognitive load.
+
+Team settings
+
+Claude Code supports repo-level settings via .claude/settings.json. This means you can check your permissions into source control and share them across your team.
+
+Without this, every developer on the project makes the same security decisions independently. Some will be careful. Some will use --dangerously-skip-permissions. You end up with inconsistent security posture across the team with no visibility into who's running what.
+
+A shared settings file means the decision gets made once, reviewed in a PR, and applied consistently.
+
+Why deny patterns matter
+
+Most conversations about AI permissions focus on what to allow. But knowing what an assistant shouldn't access is half the security model. Each template includes deny patterns for stack-specific secrets — .env files, appsettings.json, .npmrc, and so on.
+
+Why I think this matters going forward
+
+As AI coding tools become more capable and more integrated into our workflows, allow/deny lists will shift from "nice to have" to critical infrastructure. Right now most developers are either over-permissive or manually configuring everything from scratch. There's room for sensible defaults that balance productivity with security.
+
+The tooling around permissions will mature. We'll see standardization, community vetting, and dedicated security reviews — similar to how dependency scanning evolved.
+
+claude-baseline is a small step in that direction.
+
+Link in comments. Public domain, contributions welcome.
